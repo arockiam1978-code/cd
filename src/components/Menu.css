@@ -1,0 +1,132 @@
+.menu {
+  position: relative;
+  font-family: inherit;
+}
+
+/* Ensure submenu is not clipped by ancestors */
+.menu,
+.menu-list,
+.menu-dropdown-icon {
+  overflow: visible;
+}
+
+/* Mobile trigger */
+.menu-mobile {
+  display: none; /* hidden on desktop by default */
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  color: inherit;
+}
+
+/* Use this breakpoint to show the "Navigation" button on small screens */
+@media (max-width: 768px) {
+  .menu-mobile {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .menu-list {
+    display: none;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  .menu-list.open {
+    display: block;
+  }
+}
+
+/* Desktop menu layout */
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* dropdown item */
+.menu-dropdown-icon {
+  position: relative;
+}
+
+/* dropdown toggle button */
+.menu-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* caret */
+.caret {
+  display: inline-block;
+  margin-left: 0.3rem;
+  border-top: 4px solid currentColor;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+}
+
+/* submenu */
+.normal-sub {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  min-width: 180px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  z-index: 1000;
+  opacity: 1;
+}
+
+/* visible state */
+.normal-sub.open {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  z-index: 9999;
+}
+
+/* mobile submenu (stacked) */
+@media (max-width: 768px) {
+  .normal-sub {
+    position: static;
+    box-shadow: none;
+    padding-left: 1rem;
+  }
+
+  .menu-list {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* submenu links */
+.normal-sub li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* top-level links */
+.menu-list > li > a {
+  text-decoration: none;
+  color: inherit;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+.normal-sub[aria-hidden="true"] { display: none; }
+.normal-sub[aria-hidden="false"] { display: block; }

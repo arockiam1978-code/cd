@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Header from "./components/Header";
+import HeroCarousel from "./components/HeroCarousel";
+import Footer from "./components/Footer";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+/*
+  Top-level App: composes Header, Hero/Content, Footer.
+  When converting the rest of the site, split sections into more components.
+*/
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="site-root">
+      <Header />
+      <main>
+        <HeroCarousel />
+        {/* Several promotional blocks and product-image links from original */}
+        <section className="promo-grid container">
+          <div className="row">
+            <div className="col">
+              <a href="https://www.charaghdin.com/category/11-Regular">
+                <img src="/assets/casual-shirts-2.webp" alt="Casual Shirts" />
+              </a>
+            </div>
+            <div className="col">
+              <a href="https://www.charaghdin.com/category/7-party">
+                <img src="/assets/party-shirts-2.webp" alt="Party shirts" />
+              </a>
+            </div>
+          </div>
+        </section>
 
-export default App
+        {/* SEO & long-form content preserved as static HTML */}
+        <section className="seo-text container">
+          <h1>CHARAGH DIN: The Ultimate Destination for Exclusive Shirts</h1>
+          <p>
+            Charagh Din, originally New Lord & Company, began in the year 1947...
+            (migrated content — keep the rest of the original SEO text here)
+          </p>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}
