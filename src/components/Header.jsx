@@ -1,6 +1,9 @@
 import React from "react";
 import logo from "../assets/charaghdin-logo.png";
+import wishlist from "../assets/wishLh.png";
+import cart from "../assets/cart2.png";
 import Menu from "./Menu.jsx";
+import "./Header.css";
 
 /*
   Converted header/navigation. The original used Bootstrap and many conditional elements.
@@ -17,12 +20,11 @@ export default function Header() {
         </div>
         <Menu />
         <div className="header-actions">
-          <a className="btn login" href="https://www.charaghdin.com/customers/login">Log In</a>
           <a className="icon" href="https://www.charaghdin.com/products/wishlist">
-            <img src="/assets/wishLh.png" alt="Wishlist" />
+            <img src={wishlist} alt="Wishlist" />
           </a>
           <a className="icon" href="https://www.charaghdin.com/products/shopping-cart">
-            <img src="/assets/cart2.png" alt="Cart" />
+            <img src={cart} alt="Cart" />
           </a>
         </div>
       </div>

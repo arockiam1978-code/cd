@@ -1,0 +1,49 @@
+/* Header layout: place logo, menu and actions on one row for desktop */
+.site-header .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.site-header .logo {
+  flex: 0 0 auto;
+}
+
+.site-header .logo img {
+  display: block;
+  max-height: 64px;
+  max-width: 100%;
+  height: auto;
+}
+
+.site-header .menu-wrapper,
+.site-header .menu {
+  flex: 1 1 auto;
+}
+
+.site-header .header-actions {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* On small screens, stack vertically */
+@media (max-width: 768px) {
+  .site-header .header-top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .site-header .menu-wrapper,
+  .site-header .menu {
+    width: 100%;
+  }
+
+  .site-header .header-actions {
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+}

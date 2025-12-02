@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
- import "./Menu.css";
+import "./Menu.css";
 
 const Menu = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -34,16 +34,37 @@ const Menu = () => {
         }
     };
 
+    // Open submenu on hover for desktop
+    const handleMouseEnter = (key) => (e) => {
+        try {
+            if (window.innerWidth > 768) {
+                setOpenSubmenus((prev) => ({ ...prev, [key]: true }));
+            }
+        } catch (err) {
+            // ignore in non-browser environments
+        }
+    };
+
+    const handleMouseLeave = (key) => (e) => {
+        try {
+            if (window.innerWidth > 768) {
+                setOpenSubmenus((prev) => ({ ...prev, [key]: false }));
+            }
+        } catch (err) {
+            // ignore
+        }
+    };
+
     return (
-        <>
-            <div className="menu col-lg-5 padding0" ref={menuRef}>
+        <div className="menu-wrapper" ref={menuRef}>
+            <div className="menu col-lg-5 padding0">
                 <a href="#" className="menu-mobile" onClick={toggleMobile}>
                     Navigation
                 </a>
             </div>
             <ul className={`menu-list ${mobileOpen ? "open" : ""}`}>
                 {/* Shirts dropdown */}
-                <li className="menu-dropdown-icon">
+                <li className="menu-dropdown-icon" onMouseEnter={handleMouseEnter("shirts")} onMouseLeave={handleMouseLeave("shirts")}>
                     <button
                         type="button"
                         aria-haspopup="true"
@@ -75,7 +96,7 @@ const Menu = () => {
                 </li>
 
                 {/* T-shirts dropdown */}
-                <li className="menu-dropdown-icon">
+                <li className="menu-dropdown-icon" onMouseEnter={handleMouseEnter("tshirts")} onMouseLeave={handleMouseLeave("tshirts")}>
                     <button
                         type="button"
                         aria-haspopup="true"
@@ -111,7 +132,7 @@ const Menu = () => {
                     <a href="/customers/track-order">Track Order</a>
                 </li>
             </ul>
-        </>
+        </div>
     );
 };
 
