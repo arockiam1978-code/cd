@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "../assets/charaghdin-logo.png";
-import wishlist from "../assets/wishLh.png";
-import cart from "../assets/cart2.png";
+const logoUrl = new URL("../assets/charaghdin-logo.png", import.meta.url).href;
+const cart = new URL("../assets/cart2.png", import.meta.url).href ;
 import Menu from "./Menu.jsx";
 import "./Header.css";
 
@@ -14,16 +13,17 @@ export default function Header() {
     <header className="site-header">
       <div className="header-top container">
         <div className="logo">
-          <a href="https://www.charaghdin.com/">
-            <img src={logo} alt="Charagh Din Logo" />
+          <a href="/">
+            <img src={logoUrl} alt="Charagh Din Logo" />
           </a>
         </div>
         <Menu />
         <div className="header-actions">
-          <a className="icon" href="https://www.charaghdin.com/products/wishlist">
-            <img src={wishlist} alt="Wishlist" />
+          <a className="btn login" href="/customers/login">Log In</a>
+          <a className="icon" href="/products/wishlist">
+            <img src={new URL("../assets/wishLh.png", import.meta.url).href} alt="Wishlist" />
           </a>
-          <a className="icon" href="https://www.charaghdin.com/products/shopping-cart">
+          <a className="icon" href="/products/shopping-cart">
             <img src={cart} alt="Cart" />
           </a>
         </div>
