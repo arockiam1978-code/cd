@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./components/Header";
-import HeroCarousel from "./components/HeroCarousel";
-import Footer from "./components/Footer";
-import Banner from "./components/Banner";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import Login from "./pages/Login"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /*
@@ -11,12 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 */
 export default function App() {
   return (
-    <div className="site-root">
-      <Header />
-      <HeroCarousel />
-      <Banner />
-
-      <Footer />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Layout>
   );
 }
