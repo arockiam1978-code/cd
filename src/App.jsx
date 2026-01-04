@@ -2,7 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
-import Login from "./pages/Login"; 
+import Login from "./pages/Login";
+import Category from "./pages/Category";
+import ProductsDetails from "./pages/ProductsDetails";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 /*
@@ -15,6 +17,8 @@ export default function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/login' element={<Login />} />
+        <Route path="/category/:slug" element={<Category />} />
+        <Route path='/products/:productId' element={<ProductsDetails />} />
       </Routes>
     </Layout>
   );
